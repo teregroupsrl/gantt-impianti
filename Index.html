@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Gantt impianti Teregroup</title>
+<style>body{margin:0;font:15px system-ui,-apple-system,"Segoe UI",sans-serif;background:#EDEEF0;color:#1C1F22;display:flex;min-height:100vh;align-items:center;justify-content:center}p{color:#5E656C}</style>
+</head>
+<body>
+<p id="m">Caricamento del Gantt impianti…</p>
+<script>
+// La pagina vera (dati cifrati, aggiornata ogni ora) è nell'archivio Google Apps Script di Teregroup.
+var API = "https://script.google.com/macros/s/AKfycbyJx1i9ZuzXv14loWhqEmcpqEK74FSvnwaPE9lv3sG6tXzom0Ky-s_r2GQqEExM2BIAVA/exec";
+fetch(API + "?page=1&t=" + Date.now())
+  .then(function(r){ if (!r.ok) throw new Error(r.status); return r.text(); })
+  .then(function(h){ document.open(); document.write(h); document.close(); })
+  .catch(function(){ document.getElementById("m").textContent = "Pagina non raggiungibile in questo momento: riprova tra poco."; });
+</script>
+</body>
+</html>
